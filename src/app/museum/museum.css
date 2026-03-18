@@ -37,10 +37,11 @@
   position: relative;
   z-index: 10;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
-
 /* ─── PLUSHIE ────────────────────────────────────────────────── */
 .plushie {
   width: clamp(200px, 30vw, 420px);
@@ -69,4 +70,13 @@
 .back-btn:hover {
   border-color: rgba(255, 255, 255, 0.8);
   color: #fff;
+}
+.title {
+  font-family: var(--uk-font);
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  color: #fff;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  max-width: 60vw;
+  text-align: center;
 }
