@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.css */
+@font-face {
+    font-family: 'VCR OSD Mono';
+    src: url('/fonts/vcr_osd_mono/vcr_osd_mono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BroshKill';
+    src: url('/fonts/broshKill/BroshKill.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-family: 'VCR OSD Mono', monospace;
+    color: white;
+    overflow: hidden;
+}
+
+/* Global scanline CRT effect */
+body::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.18) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.015), rgba(0, 0, 255, 0.04));
+    z-index: 9999;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}

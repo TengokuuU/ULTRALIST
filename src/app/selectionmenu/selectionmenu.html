@@ -1,0 +1,54 @@
+<div class="selection-container">
+
+  <!-- Animated circuit background (same as main menu) -->
+  <div class="bg-animator"></div>
+
+  <!-- Sidebars — two copies each for seamless infinite vertical scroll -->
+  <div class="sidebar sidebar-left">
+    <div class="sidebar-img-track">
+      <img src="images/left-bg.png" alt="" class="sidebar-img" />
+      <img src="images/left-bg.png" alt="" class="sidebar-img" />
+    </div>
+  </div>
+  <div class="sidebar sidebar-right">
+    <div class="sidebar-img-track">
+      <img src="images/right-bg.png" alt="" class="sidebar-img" />
+      <img src="images/right-bg.png" alt="" class="sidebar-img" />
+    </div>
+  </div>
+
+  <div class="menu-wrapper">
+    <div class="section">
+      <h2 class="section-title">PRIMARY</h2>
+      <div class="section-divider"></div>
+
+      @for (item of primaryItems; track item.id) {
+        <div class="menu-row" (click)="navigate(item.id)">
+          <span class="row-label">{{ item.label }}</span>
+          
+          <div class="rank-badge" [class.earned]="item.rank">
+            @if (item.rank) {
+              <span class="rank-letter">P</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="section secondary-section">
+      <h2 class="section-title">SECONDARY</h2>
+      <div class="section-divider"></div>
+
+      @for (item of secondaryItems; track item.id) {
+        <div class="menu-row" (click)="navigate(item.id)">
+          <span class="row-label">{{ item.label }}</span>
+          <div class="rank-badge" [class.earned]="item.rank">
+            @if (item.rank) {
+              <span class="rank-letter">P</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

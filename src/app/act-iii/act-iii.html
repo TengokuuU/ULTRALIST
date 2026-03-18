@@ -1,0 +1,191 @@
+<div class="prelude-container">
+
+    <!-- Background -->
+    <div class="bg-animator"></div>
+
+    <div class="content">
+
+        <!-- Top bar: mode centred -->
+        <div class="top-bar">
+            <span class="mode-label">STANDARD</span>
+        </div>
+
+        <!-- Scrollable layers -->
+        <div class="layers-scroll">
+
+            <!-- ── LAYER 7: VIOLENCE ── -->
+            <div class="layer-section">
+                <div class="layer-header">
+                    <div class="layer-title-row">
+                        <span class="layer-full-title">LAYER 7: VIOLENCE</span>
+                        <div class="layer-header-right">
+                            <div class="p-badge large" [class.earned]="chapterPRank"><span>P</span></div>
+                            <button class="secret-mission-btn" (click)="goBack()">SECRET MISSION</button>
+                        </div>
+                    </div>
+                    <div class="layer-underline"></div>
+                </div>
+                <div class="levels-row">
+                    @for (level of violenceLevels; track level.id) {
+                    <div class="level-card"> <!-- ← opens here -->
+                        <div class="level-title-row" [class.level-title-row--sm]="level.id === '7-4'">
+                            <span class="level-code">{{ level.code }}:</span>
+                            <span class="level-name">{{ level.title }}</span>
+                        </div>
+                        <div class="level-title-underline"></div> <!-- ← inside level-card -->
+                        <div class="screenshot-wrapper">
+                            <img [src]="level.screenshot" [alt]="level.title" class="screenshot" />
+                        </div>
+                        <div class="challenges-block">
+                            <div class="challenges-left">
+                                <div class="challenge-slots">
+                                    @for (slot of level.challenges; track $index) {
+                                    <div class="challenge-slot" [class.filled]="slot.completed"></div>
+                                    }
+                                </div>
+                                <div class="completion-label-box">
+                                    {{ level.completed ? 'C O M P L E T E' : 'C H A L L E N G E' }}
+                                </div>
+                            </div>
+                            <div class="p-badge small" [class.earned]="level.pRank"><span>P</span></div>
+                        </div>
+                        <div class="tabs-row">
+                            <button class="tab-btn" [class.active]="level.activeTab === 'ANY'"
+                                (click)="setTab(level, 'ANY')">ANY</button>
+                            <button class="tab-btn" [class.active]="level.activeTab === 'P-RANK'"
+                                (click)="setTab(level, 'P-RANK')">P-RANK</button>
+                        </div>
+                        <div class="leaderboard">
+                            @for (entry of level.leaderboard; track entry.name) {
+                            <div class="lb-entry">
+                                <img [src]="entry.avatar" [alt]="entry.name" class="lb-avatar" />
+                                <span class="lb-name">{{ entry.name }}</span>
+                                <span class="lb-score"><span class="lb-diff">{{ entry.difficulty }}</span>{{ entry.rank
+                                    }}:{{ entry.score }}</span>
+                            </div>
+                            }
+                        </div>
+                    </div> <!-- ← closes level-card -->
+                    } <!-- ← closes @for -->
+                </div><!-- /levels-row -->
+            </div><!-- /layer-section -->
+            <!-- ── LAYER 8: FRAUD ─────────────────────────────────── -->
+            <div class="layer-section">
+                <div class="layer-header">
+                    <div class="layer-title-row">
+                        <span class="layer-full-title">LAYER 8: FRAUD</span>
+                        <div class="layer-header-right">
+                            <div class="p-badge large"><span>P</span></div>
+                            <button class="secret-mission-btn" (click)="goBack()">SECRET MISSION</button>
+                        </div>
+                    </div>
+                    <div class="layer-underline"></div>
+                </div>
+                <div class="levels-row">
+                    @for (level of wrathLevels; track level.id) {
+                    <div class="level-card">
+                        <div class="level-title-row">
+                            <span class="level-code">{{ level.code }}:</span>
+                            <span class="level-name">{{ level.title }}</span>
+                        </div>
+                        <div class="level-title-underline"></div>
+                        <div class="screenshot-wrapper">
+                            <img [src]="level.screenshot" [alt]="level.title" class="screenshot" />
+                        </div>
+                        <div class="challenges-block">
+                            <div class="challenges-left">
+                                <div class="challenge-slots">
+                                    @for (slot of level.challenges; track $index) {
+                                    <div class="challenge-slot" [class.filled]="slot.completed"></div>
+                                    }
+                                </div>
+                                <div class="completion-label-box">
+                                    {{ level.completed ? 'C O M P L E T E' : 'C H A L L E N G E' }}
+                                </div>
+                            </div>
+                            <div class="p-badge small" [class.earned]="level.pRank"><span>P</span></div>
+                        </div>
+                        <div class="tabs-row">
+                            <button class="tab-btn" [class.active]="level.activeTab === 'ANY'"
+                                (click)="setTab(level, 'ANY')">ANY</button>
+                            <button class="tab-btn" [class.active]="level.activeTab === 'P-RANK'"
+                                (click)="setTab(level, 'P-RANK')">P-RANK</button>
+                        </div>
+                        <div class="leaderboard">
+                            @for (entry of level.leaderboard; track entry.name) {
+                            <div class="lb-entry">
+                                <img [src]="entry.avatar" [alt]="entry.name" class="lb-avatar" />
+                                <span class="lb-name">{{ entry.name }}</span>
+                                <span class="lb-score"><span class="lb-diff">{{ entry.difficulty }}</span>{{
+                                    entry.rank
+                                    }}:{{ entry.score }}</span>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <!-- ── LAYER 9: TREACHERY ────────────────────────────────── -->
+            <div class="layer-section">
+                <div class="layer-header">
+                    <div class="layer-title-row">
+                        <span class="layer-full-title">LAYER 9: TREACHERY</span>
+                        <div class="layer-header-right">
+                            <div class="p-badge large"><span>P</span></div>
+                            <button class="secret-mission-btn" (click)="goBack()">SECRET MISSION</button>
+                        </div>
+                    </div>
+                    <div class="layer-underline"></div>
+                </div>
+                <div class="levels-row">
+                    @for (level of heresyLevels; track level.id) {
+                    <div class="level-card">
+                        <div class="level-title-row">
+                            <span class="level-code">{{ level.code }}:</span>
+                            <span class="level-name">{{ level.title }}</span>
+                        </div>
+                        <div class="level-title-underline"></div>
+                        <div class="screenshot-wrapper">
+                            <img [src]="level.screenshot" [alt]="level.title" class="screenshot" />
+                        </div>
+                        <div class="challenges-block">
+                            <div class="challenges-left">
+                                <div class="challenge-slots">
+                                    @for (slot of level.challenges; track $index) {
+                                    <div class="challenge-slot" [class.filled]="slot.completed"></div>
+                                    }
+                                </div>
+                                <div class="completion-label-box">
+                                    {{ level.completed ? 'C O M P L E T E' : 'C H A L L E N G E' }}
+                                </div>
+                            </div>
+                            <div class="p-badge small" [class.earned]="level.pRank"><span>P</span></div>
+                        </div>
+                        <div class="tabs-row">
+                            <button class="tab-btn" [class.active]="level.activeTab === 'ANY'"
+                                (click)="setTab(level, 'ANY')">ANY</button>
+                            <button class="tab-btn" [class.active]="level.activeTab === 'P-RANK'"
+                                (click)="setTab(level, 'P-RANK')">P-RANK</button>
+                        </div>
+                        <div class="leaderboard">
+                            @for (entry of level.leaderboard; track entry.name) {
+                            <div class="lb-entry">
+                                <img [src]="entry.avatar" [alt]="entry.name" class="lb-avatar" />
+                                <span class="lb-name">{{ entry.name }}</span>
+                                <span class="lb-score"><span class="lb-diff">{{ entry.difficulty }}</span>{{
+                                    entry.rank
+                                    }}:{{ entry.score }}</span>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+
+        </div><!-- /layers-scroll -->
+
+    </div>
+</div>

@@ -1,0 +1,384 @@
+/* act-i.css */
+:host {
+  --uk-font: 'VCR OSD Mono', monospace;
+  --uk-gold: #e8a010;
+  --uk-gold-border: #c88000;
+}
+
+/* ─── CONTAINER ──────────────────────────────────────────────── */
+.prelude-container {
+  background-color: #0a0a0a;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--uk-font);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── BACKGROUND ─────────────────────────────────────────────── */
+.bg-animator {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/images/bg2.png');
+  background-repeat: repeat;
+  background-size: 100% auto;
+  opacity: 1;
+  filter: brightness(1.2);
+  animation: bgSlide 0.16s linear infinite;
+}
+
+@keyframes bgSlide {
+  from { background-position: 0px 0px; }
+  to   { background-position: 0px -900px; }
+}
+
+
+
+/* ─── CONTENT ────────────────────────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 14px 24px 14px;
+  box-sizing: border-box;
+}
+
+/* ─── TOP BAR ────────────────────────────────────────────────── */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.mode-label {
+  font-family: var(--uk-font);
+  font-size: 1.9rem;
+  letter-spacing: 0em;
+  color: rgba(255,255,255,1);
+}
+
+/* ─── SECRET MISSION BUTTON ──────────────────────────────────── */
+.secret-mission-btn {
+  font-family: var(--uk-font);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.6);
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: border-color 0.1s, color 0.1s;
+}
+
+.secret-mission-btn:hover {
+  border-color: rgba(255,255,255,0.8);
+  color: #fff;
+}
+
+/* ─── LAYERS SCROLL ──────────────────────────────────────────── */
+.layers-scroll {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+
+.layers-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.layers-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+}
+
+/* ─── LAYER SECTION ──────────────────────────────────────────── */
+.layer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ─── LAYER HEADER — game-accurate style ────────────────────── */
+.layer-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 2px;
+}
+
+.layer-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Big solid "LAYER 1: LIMBO" title, exactly like the game */
+.layer-full-title {
+  font-family: var(--uk-font);
+  font-size: 4rem;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  color: #fff;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+/* Right side: P badge + secret mission */
+.layer-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Horizontal rule under header block */
+.layer-underline {
+  height: 2px;
+  background: rgba(255,255,255,0.7);
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* ─── LEVELS ROW ─────────────────────────────────────────────── */
+.levels-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+/* ─── LEVEL CARD ─────────────────────────────────────────────── */
+.level-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ─── LEVEL TITLE ────────────────────────────────────────────── */
+.level-title-row {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  margin-bottom: 3px;
+  justify-content: center;
+}
+
+.level-code {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.8);
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+}
+
+.level-name {
+  font-size: 1.2rem;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.05em;
+}
+
+.level-title-underline {
+  height: 1px;
+  background: rgba(255,255,255,0.5);
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+/* ─── SCREENSHOT ─────────────────────────────────────────────── */
+.screenshot-wrapper {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screenshot {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── CHALLENGES BLOCK ───────────────────────────────────────── */
+.challenges-block {
+  display: flex;
+  gap: 6px;
+  align-items: stretch;
+  margin-bottom: 6px;
+}
+
+.challenges-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 70%;
+  min-width: 0;
+}
+
+/* ─── CHALLENGE SQUARES ──────────────────────────────────────── */
+.challenge-slots {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+
+.challenge-slot {
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  border: 2px solid rgba(255,255,255,0.75);
+  border-radius: 2px;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.challenge-slot.filled {
+  background: rgba(255,255,255,0.85);
+}
+
+/* ─── COMPLETION LABEL BOX ───────────────────────────────────── */
+.completion-label-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 3px;
+  font-family: var(--uk-font);
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.85);
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 4px 0;
+  width: 100%;
+}
+
+/* ─── P BADGE ────────────────────────────────────────────────── */
+.p-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.4);
+  background: transparent;
+  color: rgba(255,255,255,0.3);
+  font-family: var(--uk-font);
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.p-badge.earned {
+  background: var(--uk-gold);
+  border-color: var(--uk-gold-border);
+  color: #fff;
+}
+
+.p-badge.large {
+  width: 48px;
+  height: 48px;
+  font-size: 1.7rem;
+  border-radius: 6px;
+}
+
+.p-badge.small {
+  flex: 1;
+  align-self: stretch;
+  font-size: 3.2rem;
+  border-radius: 5px;
+}
+
+/* ─── TABS ───────────────────────────────────────────────────── */
+.tabs-row {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.tab-btn {
+  flex: 1;
+  font-family: var(--uk-font);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  padding: 4px 0;
+  background: #000;
+  color: rgba(255,255,255,0.6);
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.08s, color 0.08s, border-color 0.08s;
+}
+
+.tab-btn.active {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.tab-btn:hover:not(.active) {
+  border-color: rgba(255,255,255,0.7);
+  color: #fff;
+}
+
+/* ─── LEADERBOARD ────────────────────────────────────────────── */
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lb-entry {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.85);
+}
+
+.lb-avatar {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+  background: #333;
+}
+
+.lb-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.04em;
+}
+
+.lb-score {
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.7);
+}
+
+.lb-diff {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.52rem;
+  margin-right: 2px;
+}

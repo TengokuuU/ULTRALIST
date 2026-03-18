@@ -1,0 +1,105 @@
+<div class="title-screen-container">
+
+  <!-- Background layers: static + animated pan -->
+  <div class="bg-static"></div>
+  <div class="bg-animator"></div>
+
+  <!-- Chamfered corner border frame -->
+  <svg class="screen-border" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1000 600">
+    <polygon
+      points="30,10 970,10 990,30 990,570 970,590 30,590 10,570 10,30"
+      fill="none"
+      stroke="rgba(255,255,255, 1)"
+      stroke-width="5"
+      vector-effect="non-scaling-stroke"
+    />
+  </svg>
+
+  <!-- Main UI -->
+  <div class="main-content">
+
+    <!-- Left column -->
+    <div class="left-column">
+
+      <div class="top-section">
+        <h1 class="logo">ULTRALIST</h1>
+        <p class="access-tag">EARLY_ACCESS READY</p>
+        <div class="diagnostics">
+          <p>SYSTEM V1 INITIALIZED</p>
+          <p>DIAGNOSTICS...OK</p>
+          <p>STANDBY _ WAIT FOR WAKE</p>
+        </div>
+      </div>
+
+      <div class="button-container">
+        @for (btn of buttons; track btn) {
+          <button
+            class="menu-button"
+            [class.active]="btn === activeButton"
+            (click)="navigate(btn)"
+            (mouseenter)="setActive(btn)"
+          >
+            {{ btn }}
+          </button>
+        }
+      </div>
+
+      <div class="footer">
+        <p class="socials-init">INIT SOCIALS...OK</p>
+        <div class="links">
+          <a href="#" class="social-link">DISCORD</a>
+          <a href="#" class="social-link">TWITTER</a>
+          <a href="#" class="social-link">YOUTUBE</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right column: V1 mech + diagnostic labels -->
+    <div class="right-column">
+
+      <div class="module-info top-right">
+        <p>VISUAL CORTEX MODULE</p>
+        <p>STATUS CHECK...</p>
+        <p>TIME PROCESSING DILATION SYSTEM: OK</p>
+        <p>VISUAL PROCESSING ACCURACY: MINIMAL</p>
+      </div>
+
+      <div class="v1-graphic">
+        <img src="images/v1.png" alt="V1 Unit" />
+
+        <div class="module-label top-left-mech">
+          <p>WING MODULE (B)</p>
+          <p>STATUS CHECK...</p>
+          <p>MATTER-ENERGY CONVERSION STORAGE SYSTEM: OK</p>
+          <p>INSTANT PROPULSION SYSTEM: OK</p>
+          <p>CONTINUOUS PROPULSION SYSTEM: OK</p>
+        </div>
+
+        <div class="module-label mid-left-mech">
+          <p>ARM MODULE (FACTORY DEFAULT)</p>
+          <p>STATUS CHECK...</p>
+          <p>INERTIA CORRECTION SYSTEM: OK</p>
+          <p>CENTER-OF-GRAVITY AUTOBALANCER SYSTEM: OK</p>
+        </div>
+
+        <div class="module-label mid-right-mech">
+          <p>ARM MODULE ("FEEDBACKER")</p>
+          <p>STATUS CHECK...</p>
+          <p>VECTOR REDIRECTION SYSTEM: OK</p>
+          <p>"CROSS COUNTER" PROGRAM: FOUND</p>
+        </div>
+
+        <div class="module-label bot-right-mech">
+          <p>LEG MODULE (FACTORY DEFAULT) (2)</p>
+          <p>STATUS CHECK...</p>
+          <p>FALL IMPACT REDUCTION SYSTEM: OK</p>
+          <p>WEIGHT REDISTRIBUTION SYSTEM: OK</p>
+          <p>POTENTIAL ENERGY STORAGE SYSTEM: OK</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,194 @@
+/* selectionmenu.css */
+:host {
+  --uk-font: 'VCR OSD Mono', monospace;
+  --uk-gold: #ffb800; /* More vibrant Ultrakill gold */
+  --uk-gold-dark: #8a6200;
+  --uk-gold-border: #c88000;
+}
+
+/* ─── CONTAINER ──────────────────────────────────────────────── */
+.selection-container {
+  background-color: #0a0a0a;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--uk-font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── BACKGROUND ─────────────────────────────────────────────── */
+.bg-animator {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: url('/images/bg.png');
+  background-repeat: repeat;
+  background-size: 900px auto;
+  opacity: 1;
+  filter: brightness(0.2);
+  animation: bgSlide 20s linear infinite;
+}
+
+@keyframes bgSlide {
+  from { background-position: 0px 0px; }
+  to   { background-position: 0px -900px; }
+}
+
+/* ─── MENU WRAPPER ───────────────────────────────────────────── */
+.menu-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 40px 0;
+}
+
+/* ─── SECTION ────────────────────────────────────────────────── */
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ─── SECTION TITLE — left aligned ───────────────────────────── */
+.section-title {
+  font-family: var(--uk-font);
+  font-size: 1rem;
+  font-weight: normal;
+  letter-spacing: 0.25em;
+  color: #fff;
+  margin: 0 0 6px 0;
+  text-align: left;
+  width: 100%;
+}
+
+/* ─── SECTION DIVIDER ────────────────────────────────────────── */
+.section-divider {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* ─── MENU ROW ───────────────────────────────────────────────── */
+.menu-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 13px 20px;
+  cursor: pointer;
+  background: transparent;
+  border: 3px solid rgba(255, 255, 255, 1);
+  border-radius: 6px;
+  margin-bottom: 3px;
+  width: 100%;
+  transition: border-color 0.1s linear;
+  position: relative;
+  transform: none;
+}
+
+.menu-row:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: none;
+}
+
+/* ─── ROW LABEL ──────────────────────────────────────────────── */
+.row-label {
+  flex: 1;
+  font-family: var(--uk-font);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+/* ─── RANK BADGE ─────────────────────────────────────────────── */
+.rank-badge {
+  width: 32px;
+  height: 32px;
+  border: 2.5px solid rgba(255, 255, 255, 0.75);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.rank-badge.earned {
+  background: var(--uk-gold);
+  border-color: var(--uk-gold-border);
+}
+
+.rank-letter {
+  font-family: var(--uk-font);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1;
+}
+
+/* ─── SECONDARY SECTION ─────────────────────────────────────── */
+.secondary-section {
+  margin-top: 4px;
+}
+
+/* ─── SIDEBARS ───────────────────────────────────────────────── */
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 33%;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.sidebar-left  { left: 0; }
+.sidebar-right { right: 0; }
+
+/* Two stacked copies per sidebar for seamless infinite scroll */
+.sidebar-img-track {
+  display: flex;
+  flex-direction: column;
+  height: 200%;
+  animation: fallDown 4s linear infinite;
+  /*  animation: flickerIn 10s ease-in-out infinite; */
+}
+
+.sidebar-left .sidebar-img-track  { animation-duration: 0.15s; }
+.sidebar-right .sidebar-img-track { animation-duration: 0.15s; }
+
+.sidebar-img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ─── SIDEBAR ANIMATIONS ─────────────────────────────────────── */
+@keyframes fallDown {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+/* Brightness pulse kept from your version */
+@keyframes flickerIn {
+  0%   { filter: brightness(1); }
+  10%  { filter: brightness(0.8); }
+  20%  { filter: brightness(0.6); }
+  30%  { filter: brightness(0.4); }
+  40%  { filter: brightness(0.2); }
+  55%  { filter: brightness(0.4); }
+  70%  { filter: brightness(0.6); }
+  85%  { filter: brightness(0.8); }
+  100% { filter: brightness(1); }
+}

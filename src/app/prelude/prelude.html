@@ -1,0 +1,71 @@
+<div class="prelude-container">
+  <!-- Background -->
+  <div class="bg-animator"></div>
+  <div class="content">
+    <!-- Top bar -->
+    <div class="top-bar">
+      <span class="mode-label">STANDARD</span>
+    </div>
+    <!-- Chapter header -->
+    <div class="chapter-header">
+      <div class="chapter-left">
+        <h1 class="chapter-title">{{ chapterTitle }}</h1>
+        <div class="chapter-underline"></div>
+      </div>
+      <div class="chapter-right">
+        <div class="p-badge large" [class.earned]="chapterPRank">P</div>
+        <button class="secret-mission-btn" (click)="goBack()">SECRET MISSION</button>
+      </div>
+    </div>
+    <!-- Level cards row -->
+    <div class="levels-row">
+      @for (level of levels; track level.id) {
+        <div class="level-card">
+          <!-- Level title -->
+          <div class="level-title-row">
+            <span class="level-code">{{ level.code }}:</span>
+            <span class="level-name">{{ level.title }}</span>
+          </div>
+          <div class="level-title-underline"></div>
+          <!-- Screenshot -->
+          <div class="screenshot-wrapper">
+            <img [src]="level.screenshot" [alt]="level.title" class="screenshot" />
+          </div>
+          <!-- Challenges block + P badge side by side -->
+          <div class="challenges-block">
+            <!-- Left: 5 squares on top, label box on bottom -->
+            <div class="challenges-left">
+              <div class="challenge-slots">
+                @for (slot of level.challenges; track $index) {
+                  <div class="challenge-slot" [class.filled]="slot.completed"></div>
+                }
+              </div>
+              <div class="completion-label-box">
+                {{ level.completed ? 'C O M P L E T E' : 'C H A L L E N G E' }}
+              </div>
+            </div>
+            <!-- Right: P badge, same height as the two stacked elements -->
+            <div class="p-badge small" [class.earned]="level.pRank">P</div>
+          </div>
+          <!-- ANY / P-RANK tabs -->
+          <div class="tabs-row">
+            <button class="tab-btn" [class.active]="level.activeTab === 'ANY'" (click)="setTab(level, 'ANY')">ANY</button>
+            <button class="tab-btn" [class.active]="level.activeTab === 'P-RANK'" (click)="setTab(level, 'P-RANK')">P-RANK</button>
+          </div>
+          <!-- Leaderboard -->
+          <div class="leaderboard">
+            @for (entry of level.leaderboard; track entry.name) {
+              <div class="lb-entry">
+                <img [src]="entry.avatar" [alt]="entry.name" class="lb-avatar" />
+                <span class="lb-name">{{ entry.name }}</span>
+                <span class="lb-score">
+                  <span class="lb-diff">{{ entry.difficulty }}</span>{{ entry.rank }}:{{ entry.score }}
+                </span>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

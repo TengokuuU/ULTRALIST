@@ -1,0 +1,262 @@
+/* main-menu.css */
+:host {
+  --uk-font: 'VCR OSD Mono', monospace;
+  --uk-logo-font: 'BroshKill', 'VCR OSD Mono', monospace;
+}
+
+/* ─── CONTAINER ─────────────────────────────────────────────── */
+.title-screen-container {
+  background-color: #111;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--uk-font);
+  display: flex;
+}
+/* Screen-edge border frame with chamfered corners — SVG overlay in HTML */
+.screen-border {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+.screen-border rect {
+  fill: none;
+  stroke: rgba(255, 255, 255, 1);
+  stroke-width: 5;
+}
+/* ─── ANIMATED CIRCUIT BOARD BACKGROUND ─────────────────────── */
+
+
+/* Layer 2: slow horizontal pan for animation */
+.bg-animator {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: url('/images/bg.png');
+  background-repeat: repeat;
+  background-size: 900px auto;
+  opacity: 0.6;
+  filter: brightness(1);
+  animation: bgSlide 20s linear infinite;
+}
+
+@keyframes bgSlide {
+  from { background-position: 0px 0px; }
+  to   { background-position: 0px -900px; }
+}
+
+/* ─── MAIN CONTENT LAYOUT ────────────────────────────────────── */
+.main-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: stretch;
+}
+
+/* ─── LEFT COLUMN ────────────────────────────────────────────── */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 40px 36px 56px;
+  width: 46%;
+  flex-shrink: 0;
+}
+
+/* ─── TOP SECTION ────────────────────────────────────────────── */
+.top-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ─── LOGO ───────────────────────────────────────────────────── */
+.logo {
+  font-family: var(--uk-logo-font);
+  font-size: 12rem;
+  font-style: normal;
+  font-weight: normal;
+  margin: 0 0 4px 0;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: #fff;
+}
+
+/* ─── ACCESS TAG ─────────────────────────────────────────────── */
+.access-tag {
+  font-family: var(--uk-font);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 14px 2px;
+}
+
+/* ─── DIAGNOSTICS ────────────────────────────────────────────── */
+.diagnostics {
+  font-family: var(--uk-font);
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.03em;
+}
+
+.diagnostics p {
+  margin: 0;
+}
+
+/* ─── BUTTON CONTAINER ───────────────────────────────────────── */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* ─── BUTTONS ────────────────────────────────────────────────── */
+.menu-button {
+  font-family: var(--uk-font);
+  width: 100%;
+  max-width: 500px;
+  background: #000;
+  color: #fff;
+  border: 3px solid rgba(255,255,255,0.9);
+  font-size: 2.5rem;
+  padding: 13px 20px;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 0.08em;
+  border-radius: 6px;
+  transition: border-color 0.1s linear, background 0.1s linear, color 0.1s linear;
+  display: block;
+  transform: none;
+}
+
+/* Hover: only darken the border slightly, no movement */
+.menu-button:hover {
+  background: #000;
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+  transform: none;
+}
+
+/* PLAY — always highlighted white */
+.menu-button:first-child,
+.menu-button.active {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+/* ─── FOOTER / SOCIALS ───────────────────────────────────────── */
+.footer {
+  font-family: var(--uk-font);
+}
+
+.socials-init {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 4px 0;
+  letter-spacing: 0.04em;
+}
+
+.links {
+  display: flex;
+  gap: 22px;
+}
+
+.social-link {
+  font-family: var(--uk-font);
+  font-size: 0.9rem;
+  color: #fff;
+  text-decoration: underline;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.social-link:hover {
+  color: rgba(255,255,255,0.55);
+}
+
+/* ─── RIGHT COLUMN ───────────────────────────────────────────── */
+.right-column {
+  flex: 1;
+  position: relative;
+}
+
+/* ─── V1 GRAPHIC ─────────────────────────────────────────────── */
+.v1-graphic {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 700px;
+  pointer-events: none;
+}
+
+.v1-graphic img {
+  width: 110%;
+  display: block;
+  /* invert dark art to white; mix-blend-mode screen kills the black background box */
+  mix-blend-mode: screen;
+}
+
+/* ─── MODULE INFO LABELS ─────────────────────────────────────── */
+.module-info,
+.module-label {
+  font-family: var(--uk-font);
+  font-size: 0.58rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.03em;
+  position: absolute;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.module-info p,
+.module-label p {
+  margin: 0;
+}
+
+/* VISUAL CORTEX — top right corner */
+.top-right {
+  top: 60px;
+  right: 260px;
+  text-align: left;
+}
+
+/* WING MODULE — upper area, left of mech's head/shoulders */
+.top-left-mech {
+  top: 20%;
+  left: 0%;
+  text-align: right;
+}
+
+/* ARM MODULE (FACTORY DEFAULT) — left side, mid height */
+.mid-left-mech {
+  top: 42%;
+  left: -5%;
+  text-align: right;
+}
+
+/* ARM MODULE (FEEDBACKER) — right side, mid height */
+.mid-right-mech {
+  top: 43%;
+  right: -5%;
+  text-align: left;
+}
+
+/* LEG MODULE — bottom right */
+.bot-right-mech {
+  bottom: 110px;
+  right: 10%;
+  text-align: left;
+}

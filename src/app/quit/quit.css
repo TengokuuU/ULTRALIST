@@ -1,0 +1,97 @@
+:host {
+  --uk-font: 'VCR OSD Mono', monospace;
+}
+
+.quit-container {
+  background-color: #0a0a0a;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--uk-font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── BACKGROUND ─────────────────────────────────────────────── */
+.bg-animator {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/images/bg2.png');
+  background-repeat: repeat;
+  background-size: 100% auto;
+  opacity: 0.4;
+  filter: brightness(0.6);
+  animation: bgSlide 0.16s linear infinite;
+}
+
+@keyframes bgSlide {
+  from { background-position: 0px 0px; }
+  to   { background-position: 0px -900px; }
+}
+
+/* ─── CONTENT ────────────────────────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* ─── MAIN ROW ───────────────────────────────────────────────── */
+.shutdown-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  line-height: 1;
+}
+
+.shutdown-text {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: normal;
+  letter-spacing: 0.08em;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* Dots animate in — fixed width so layout doesn't jump */
+.dots {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: normal;
+  letter-spacing: 0;
+  color: #fff;
+  width: 3ch;          /* always reserves space for 3 dots */
+  display: inline-block;
+  white-space: pre;    /* preserves spaces so width stays stable */
+}
+
+.dots::after {
+  content: '';
+  animation: ellipsis 1.5s steps(3, end) infinite;
+}
+
+@keyframes ellipsis {
+  0%   { content: '.';   }
+  33%  { content: '..';  }
+  66%  { content: '...'; }
+  100% { content: '.';   }
+}
+
+/* ─── SUBTEXT ────────────────────────────────────────────────── */
+.subtext {
+  font-size: clamp(0.7rem, 1.4vw, 1rem);
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.45);
+  padding-left: 0.1em;
+  animation: blink 1.2s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 0.1;  }
+}   
