@@ -1,1 +1,82 @@
-<p>pinfo works!</p>
+<div class="pinfo-container">
+
+  <div class="bg-animator"></div>
+
+  <div class="content">
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      <span class="mode-label">STANDARD</span>
+    </div>
+
+    <!-- Not found state -->
+    @if (notFound) {
+      <div class="not-found">
+        <span>LEVEL NOT FOUND</span>
+      </div>
+    }
+
+    <!-- Level info -->
+    @if (level) {
+
+      <!-- Header -->
+      <div class="pinfo-header">
+        <div class="header-left">
+          <div class="level-id">{{ level.levelId }}</div>
+          <h1 class="level-title">{{ level.title }}</h1>
+        </div>
+        <div class="header-right">
+          <div class="p-badge-large"><span>P</span></div>
+        </div>
+      </div>
+      <div class="header-underline"></div>
+
+      <!-- Requirements -->
+      <div class="requirements">
+
+        <div class="req-label">P-RANK REQUIREMENTS</div>
+
+        <div class="req-grid">
+
+          <!-- Time -->
+          <div class="req-card">
+            <div class="req-card-title">TIME LIMIT</div>
+            <div class="req-card-underline"></div>
+            <div class="req-card-value">{{ level.timeRequirement }}</div>
+            <div class="req-card-sub">MUST FINISH UNDER</div>
+          </div>
+
+          <!-- Kills -->
+          <div class="req-card">
+            <div class="req-card-title">KILL COUNT</div>
+            <div class="req-card-underline"></div>
+            <div class="req-card-value">{{ level.killCount === 0 && level.timeRequirement === '???' ? '???' : level.killCount }}</div>
+            <div class="req-card-sub">MINIMUM KILLS</div>
+          </div>
+
+          <!-- Style -->
+          <div class="req-card">
+            <div class="req-card-title">STYLE SCORE</div>
+            <div class="req-card-underline"></div>
+            <div class="req-card-value">{{ level.styleScore === 0 ? '???' : (level.styleScore | number) }}</div>
+            <div class="req-card-sub">MINIMUM FOR S RANK</div>
+          </div>
+
+        </div>
+
+        @if (level.notes) {
+          <div class="req-notes">
+            <div class="req-notes-label">NOTES</div>
+            <div class="req-notes-text">{{ level.notes }}</div>
+          </div>
+        }
+
+      </div>
+
+    }
+
+    <!-- Back button -->
+    <button class="back-btn" (click)="goBack()">BACK</button>
+
+  </div>
+</div>

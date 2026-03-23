@@ -1,0 +1,84 @@
+<div class="options-container">
+
+  <div class="bg-animator"></div>
+
+  <div class="content">
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      <span class="mode-label">OPTIONS</span>
+    </div>
+
+    <!-- Header -->
+    <div class="options-header">
+      <h1 class="options-title">OPTIONS</h1>
+      <div class="header-underline"></div>
+    </div>
+
+    <!-- Body: tabs left, panel right -->
+    <div class="options-body">
+
+      <!-- Left tab list -->
+      <div class="tab-list">
+        <button class="tab-item" [class.active]="activeTab === 'AUDIO'" (click)="setTab('AUDIO')">AUDIO</button>
+        <button class="tab-item" [class.active]="activeTab === 'VIDEO'" (click)="setTab('VIDEO')">VIDEO</button>
+        <div class="tab-spacer"></div>
+        <button class="tab-item reset" (click)="resetDefaults()">RESET DEFAULTS</button>
+        <button class="tab-item back"  (click)="goBack()">BACK</button>
+      </div>
+
+      <!-- Right panel -->
+      <div class="tab-panel">
+
+        <!-- ── AUDIO ── -->
+        @if (activeTab === 'AUDIO') {
+          <div class="settings-group">
+
+            <div class="setting-row">
+              <span class="setting-label">MASTER VOLUME</span>
+              <div class="slider-wrapper">
+                <input
+                  type="range" min="0" max="100" step="1"
+                  [(ngModel)]="masterVolume"
+                  (ngModelChange)="onMasterChange()"
+                  class="uk-slider"
+                />
+                <span class="slider-value">{{ masterVolume }}</span>
+              </div>
+            </div>
+
+            <div class="setting-row">
+              <span class="setting-label">MUSIC VOLUME</span>
+              <div class="slider-wrapper">
+                <input
+                  type="range" min="0" max="100" step="1"
+                  [(ngModel)]="musicVolume"
+                  (ngModelChange)="onMusicChange()"
+                  class="uk-slider"
+                />
+                <span class="slider-value">{{ musicVolume }}</span>
+              </div>
+            </div>
+
+          </div>
+        }
+
+        <!-- ── VIDEO ── -->
+        @if (activeTab === 'VIDEO') {
+          <div class="settings-group">
+
+            <div class="setting-row">
+              <span class="setting-label">FULLSCREEN</span>
+              <button class="toggle-btn" [class.on]="isFullscreen" (click)="toggleFullscreen()">
+                {{ isFullscreen ? 'ON' : 'OFF' }}
+              </button>
+            </div>
+
+          </div>
+        }
+
+      </div>
+    </div>
+
+  </div>
+</div>

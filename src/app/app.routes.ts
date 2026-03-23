@@ -37,6 +37,9 @@ export const routes: Routes = [
   },
 { path: 'quit', component: Quit },
 {path: 'museum', loadComponent: () => import('./museum/museum').then(m => m.Museum) },
+{path: 'encores', loadComponent: () => import('./encores/encores').then(m => m.Encores) },
+{path: 'options', loadComponent: () => import('./options/options').then(m => m.Options) },
+{path: 'pinfo/:levelId', loadComponent: () => import('./pinfo/pinfo').then(m => m.PInfo) },
   // Fallback redirect back to Title Screen
   { path: '**', redirectTo: '' }
 ];

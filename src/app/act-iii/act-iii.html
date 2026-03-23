@@ -27,7 +27,7 @@
                 </div>
                 <div class="levels-row">
                     @for (level of violenceLevels; track level.id) {
-                    <div class="level-card"> <!-- ← opens here -->
+                    <div class="level-card" (click)="goToInfo(level.id)"> <!-- ← opens here -->
                         <div class="level-title-row" [class.level-title-row--sm]="level.id === '7-4'">
                             <span class="level-code">{{ level.code }}:</span>
                             <span class="level-name">{{ level.title }}</span>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="levels-row">
                     @for (level of wrathLevels; track level.id) {
-                    <div class="level-card">
+                    <div class="level-card" (click)="goToInfo(level.id)">
                         <div class="level-title-row">
                             <span class="level-code">{{ level.code }}:</span>
                             <span class="level-name">{{ level.title }}</span>

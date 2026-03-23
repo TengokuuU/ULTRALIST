@@ -1,0 +1,240 @@
+:host {
+  --uk-font: 'VCR OSD Mono', monospace;
+  --uk-gold: #e8a010;
+  --uk-gold-border: #c88000;
+}
+
+/* ─── CONTAINER ──────────────────────────────────────────────── */
+.pinfo-container {
+  background-color: #0a0a0a;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--uk-font);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── BACKGROUND ─────────────────────────────────────────────── */
+.bg-animator {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/images/bg2.png');
+  background-repeat: repeat;
+  background-size: 100% auto;
+  opacity: 1;
+  filter: brightness(1.2);
+  animation: bgSlide 0.16s linear infinite;
+}
+
+@keyframes bgSlide {
+  from { background-position: 0px 0px; }
+  to   { background-position: 0px -900px; }
+}
+
+/* ─── CONTENT ────────────────────────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 14px 24px;
+  box-sizing: border-box;
+}
+
+/* ─── TOP BAR ────────────────────────────────────────────────── */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.mode-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ─── NOT FOUND ──────────────────────────────────────────────── */
+.not-found {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ─── HEADER ─────────────────────────────────────────────────── */
+.pinfo-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 6px;
+}
+
+.header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.level-id {
+  font-size: 2.6rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.level-title {
+  font-size: 2.6rem;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  color: #fff;
+  margin: 0;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-right {
+  flex-shrink: 0;
+  padding-bottom: 6px;
+}
+
+.p-badge-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.4);
+  background: var(--uk-gold);
+  border-color: var(--uk-gold-border);
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.header-underline {
+  height: 2px;
+  background: rgba(255,255,255,0.7);
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+/* ─── REQUIREMENTS ───────────────────────────────────────────── */
+.requirements {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.req-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ─── REQ GRID ───────────────────────────────────────────────── */
+.req-grid {
+  display: flex;
+  gap: 16px;
+}
+
+/* ─── REQ CARD ───────────────────────────────────────────────── */
+.req-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 20px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.03);
+  min-width: 180px;
+}
+
+.req-card-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.5);
+}
+
+.req-card-underline {
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  width: 100%;
+}
+
+.req-card-value {
+  font-size: 2.4rem;
+  color: #fff;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.req-card-sub {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ─── NOTES ──────────────────────────────────────────────────── */
+.req-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 18px;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.02);
+  max-width: 600px;
+}
+
+.req-notes-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.4);
+}
+
+.req-notes-text {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+}
+
+/* ─── BACK BUTTON ────────────────────────────────────────────── */
+.back-btn {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-family: var(--uk-font);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.6);
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: border-color 0.1s, color 0.1s;
+}
+
+.back-btn:hover {
+  border-color: rgba(255,255,255,0.8);
+  color: #fff;
+}

@@ -20,7 +20,7 @@
     <!-- Level cards row -->
     <div class="levels-row">
       @for (level of levels; track level.id) {
-        <div class="level-card">
+        <div class="level-card" (click)="goToInfo(level.id)">
           <!-- Level title -->
           <div class="level-title-row">
             <span class="level-code">{{ level.code }}:</span>

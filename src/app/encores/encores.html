@@ -1,0 +1,62 @@
+<div class="encores-container">
+
+  <div class="bg-animator"></div>
+
+  <div class="content">
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      <span class="mode-label">STANDARD</span>
+    </div>
+
+    <!-- Header -->
+    <div class="encores-header">
+      <div class="header-left">
+        <h1 class="encores-title">ENCORES</h1>
+        <div class="header-underline"></div>
+      </div>
+      <div class="header-right">
+        <div class="p-badge large"><span>P</span></div>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="encores-grid">
+      @for (level of levels; track level.id) {
+        <div class="encore-card" (click)="goToInfo(level.id)" [class.locked]="!level.available">
+
+          <!-- Title row -->
+          <div class="card-title-row">
+            <span class="card-code">{{ level.code }}:</span>
+            <span class="card-name">{{ level.title }}</span>
+          </div>
+          <div class="card-underline"></div>
+
+          <!-- Screenshot / locked placeholder -->
+          <div class="card-screenshot-wrapper">
+            @if (level.available) {
+              <img [src]="level.screenshot" [alt]="level.title" class="card-screenshot" />
+            } @else {
+              <div class="locked-placeholder">
+                <div class="lock-cross">
+                  <div class="lock-diamond tl"></div>
+                  <div class="lock-diamond tr"></div>
+                  <div class="lock-diamond bl"></div>
+                  <div class="lock-diamond br"></div>
+                  <div class="lock-hand">✋</div>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- P badge -->
+          <div class="card-footer">
+            <div class="p-badge small" [class.earned]="level.pRank"><span>P</span></div>
+          </div>
+
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

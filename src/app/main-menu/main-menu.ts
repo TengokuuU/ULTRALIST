@@ -26,6 +26,7 @@ export class MainMenu {
         this.router.navigate(['/selection']);
         break;
       case 'OPTIONS':
+        this.router.navigate(['/options']);
         break;
       case 'MUSEUM':
         this.router.navigate(['/museum']);

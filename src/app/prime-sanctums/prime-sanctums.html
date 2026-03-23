@@ -1,1 +1,74 @@
-<p>prime-sanctums works!</p>
+<div class="sanctums-container">
+
+  <div class="bg-animator"></div>
+
+  <div class="content">
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      <span class="mode-label">STANDARD</span>
+    </div>
+
+    <!-- Header -->
+    <div class="sanctums-header">
+      <div class="header-left">
+        <h1 class="sanctums-title">PRIME SANCTUMS</h1>
+        <div class="header-underline"></div>
+      </div>
+    </div>
+
+    <!-- Cards row -->
+    <div class="sanctums-row">
+      @for (sanctum of sanctums; track sanctum.id) {
+        <div class="sanctum-card" (click)="goToInfo(sanctum.id)" [class.locked]="!sanctum.available">
+
+          <!-- Title -->
+          <div class="card-title-row">
+            <span class="card-code">{{ sanctum.code }}:</span>
+            <span class="card-name">{{ sanctum.title }}</span>
+          </div>
+          <div class="card-underline"></div>
+
+          <!-- Screenshot / lock -->
+          <div class="card-screenshot-wrapper">
+            @if (sanctum.available) {
+              <img [src]="sanctum.screenshot" [alt]="sanctum.title" class="card-screenshot" />
+            } @else {
+              <div class="locked-placeholder">
+                <div class="lock-cross">
+                  <div class="lock-diamond tl"></div>
+                  <div class="lock-diamond tr"></div>
+                  <div class="lock-diamond bl"></div>
+                  <div class="lock-diamond br"></div>
+                  <div class="lock-hand">✋</div>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- P badge -->
+          <div class="card-p-row">
+            <div class="p-badge" [class.earned]="sanctum.pRank"><span>P</span></div>
+          </div>
+
+          <!-- Leaderboard -->
+          @if (sanctum.available) {
+            <div class="leaderboard">
+              @for (entry of sanctum.leaderboard; track entry.name) {
+                <div class="lb-entry">
+                  <img [src]="entry.avatar" [alt]="entry.name" class="lb-avatar" />
+                  <span class="lb-name">{{ entry.name }}</span>
+                  <span class="lb-score">
+                    <span class="lb-diff">{{ entry.difficulty }}</span>{{ entry.score }}
+                  </span>
+                </div>
+              }
+            </div>
+          }
+
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

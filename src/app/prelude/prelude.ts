@@ -155,4 +155,7 @@ export class Prelude {
   goBack() {
     this.router.navigate(['/selection']);
   }
+  goToInfo(id: string) {
+  this.router.navigate(['/pinfo', id]);
+}
 }
