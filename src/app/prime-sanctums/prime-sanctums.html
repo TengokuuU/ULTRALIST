@@ -20,7 +20,7 @@
     <!-- Cards row -->
     <div class="sanctums-row">
       @for (sanctum of sanctums; track sanctum.id) {
-        <div class="sanctum-card" (click)="goToInfo(sanctum.id)" [class.locked]="!sanctum.available">
+        <div class="sanctum-card" (click)="goToInfo(sanctum.id)">
 
           <!-- Title -->
           <div class="card-title-row">
@@ -31,19 +31,7 @@
 
           <!-- Screenshot / lock -->
           <div class="card-screenshot-wrapper">
-            @if (sanctum.available) {
               <img [src]="sanctum.screenshot" [alt]="sanctum.title" class="card-screenshot" />
-            } @else {
-              <div class="locked-placeholder">
-                <div class="lock-cross">
-                  <div class="lock-diamond tl"></div>
-                  <div class="lock-diamond tr"></div>
-                  <div class="lock-diamond bl"></div>
-                  <div class="lock-diamond br"></div>
-                  <div class="lock-hand">✋</div>
-                </div>
-              </div>
-            }
           </div>
 
           <!-- P badge -->

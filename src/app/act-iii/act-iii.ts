@@ -216,7 +216,7 @@ export class ActIII {
       id: '9-1',
       code: '9-1',
       title: '???',
-      screenshot: 'images/act-iii/9-1.png',
+      screenshot: 'images/locked.png',
       pRank: false,
       completed: false,
       challenges: [
@@ -237,7 +237,7 @@ export class ActIII {
       id: '9-2',
       code: '9-2',
       title: '???',
-      screenshot: 'images/act-iii/9-2.png',
+      screenshot: 'images/locked.png',
       pRank: false,
       completed: false,
       challenges: [

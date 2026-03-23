@@ -52,7 +52,7 @@ export class PrimeSanctums {
       id: 'P-3',
       code: 'P-3',
       title: '???',
-      screenshot: '',
+      screenshot: 'images/locked.png',
       pRank: false,
       available: false,
       leaderboard: [],

@@ -34,19 +34,7 @@
 
           <!-- Screenshot / locked placeholder -->
           <div class="card-screenshot-wrapper">
-            @if (level.available) {
               <img [src]="level.screenshot" [alt]="level.title" class="card-screenshot" />
-            } @else {
-              <div class="locked-placeholder">
-                <div class="lock-cross">
-                  <div class="lock-diamond tl"></div>
-                  <div class="lock-diamond tr"></div>
-                  <div class="lock-diamond bl"></div>
-                  <div class="lock-diamond br"></div>
-                  <div class="lock-hand">✋</div>
-                </div>
-              </div>
-            }
           </div>
 
           <!-- P badge -->
