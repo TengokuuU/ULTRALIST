@@ -40,6 +40,8 @@ export const routes: Routes = [
 {path: 'encores', loadComponent: () => import('./encores/encores').then(m => m.Encores) },
 {path: 'options', loadComponent: () => import('./options/options').then(m => m.Options) },
 {path: 'pinfo/:levelId', loadComponent: () => import('./pinfo/pinfo').then(m => m.PInfo) },
+{path: 'cyber-grind', loadComponent: () => import('./cyber-grind/cyber-grind').then(m => m.CyberGrind) },
+{path: 'sandbox', loadComponent: () => import('./sandbox/sandbox').then(m => m.Sandbox) },
   // Fallback redirect back to Title Screen
   { path: '**', redirectTo: '' }
 ];
